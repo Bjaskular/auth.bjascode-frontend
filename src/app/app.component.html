@@ -1,6 +1,6 @@
 <div class="app-container">
   <!-- {{ email }} -->
-  <input type="email" [(value)]="email" placeholder="email"/>
-  <input type="password" [(value)]="password" placeholder="password"/>
+  <input type="email" value="{{email}}" (input)="getEmail($event)" placeholder="email"/>
+  <input type="text" value="{{password}}" (input)="getPassword($event)" placeholder="password"/>
   <button (click)="getUserData()">logIn</button>
 </div>

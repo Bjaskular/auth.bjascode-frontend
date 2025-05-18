@@ -34,8 +34,8 @@
           "configurations": {
             "production": {
               "outputPath": "../auth.bjascode-backend/public/angular",
-              "baseHref": "/angular/",
-              "deployUrl": "/angular/",
+              "baseHref": "/",
+              "deployUrl": "/",
               "budgets": [
                 {
                   "type": "initial",
@@ -54,8 +54,8 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "outputPath": "dist/assets/angular",
-              "baseHref": "/assets/angular/"
+              "outputPath": "dist/angular",
+              "baseHref": "/"
             }
           },
           "defaultConfiguration": "production"
