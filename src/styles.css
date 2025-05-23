@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.site-content-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}

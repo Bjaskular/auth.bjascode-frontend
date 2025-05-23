@@ -1,0 +1,20 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:@angular-eslint/recommended", "prettier"],
+      "rules": {
+        "quotes": ["error", "double"],
+        "no-unused-vars": "off", // Angular handles this with TS
+        "@typescript-eslint/no-unused-vars": ["warn"]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}
