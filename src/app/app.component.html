@@ -1,6 +1,11 @@
-<div class="app-container">
-  <!-- {{ email }} -->
-  <input type="email" value="{{email}}" (input)="getEmail($event)" placeholder="email"/>
-  <input type="text" value="{{password}}" (input)="getPassword($event)" placeholder="password"/>
-  <button (click)="getUserData()">logIn</button>
-</div>
+@let isAppLoading = isAppLoading$ | async;
+
+@if (isAppLoading) {
+  <div class="loading-screen">
+    elo <!--  -->
+  </div>
+} @else {
+  <div class="page-content-container">
+    <router-outlet></router-outlet>
+  </div>
+}

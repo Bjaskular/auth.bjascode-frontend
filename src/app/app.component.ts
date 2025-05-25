@@ -1,51 +1,34 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { UserHttpService } from './shared/services/user.http.service';
-import { AuthData } from './shared/models/auth-data.model';
-import { HttpErrorResponse, provideHttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { AppService } from './shared/services/app/app.service';
+import { AuthService } from './shared/services/auth/auth.service';
+import { SharedModules } from './shared/shared.module';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterOutlet,
+    SharedModules,
+    LoadingComponent
+  ],
 })
 
 export class AppComponent {
-  //input
-  //view child
-  //private props
-  //obervable - own
-  //readonly
-  //public
-  //getters
+  isAppLoading$: Observable<boolean> = this._appService.isAppLoading$;
 
-  email: string = "";
-  password: string = "";
+  constructor(
+    private _appService: AppService,
+    private _authService: AuthService
+  ) {}
 
-  constructor(private _userHttpService: UserHttpService) {}
-
-  getEmail(event: Event): void {
-    this.email = (event.target as HTMLInputElement).value;
-  }
-
-  getPassword(event: Event): void {
-    this.password = (event.target as HTMLInputElement).value;
-  }
-
-  getUserData(): void {
-    this._userHttpService.getUserData(this.email, this.password)
-      .subscribe({
-        next: (data: AuthData) => {
-          console.log(data);
-        },
-        error: (response: HttpErrorResponse) => {
-          console.error(response);
-        }
-      });
+  ngOnInit(): void {
+    this._authService.init();
   }
 }
